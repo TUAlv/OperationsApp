@@ -1,0 +1,59 @@
+<!--
+  Generated template for the HistorialAvPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>HistorialAV</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form (ngSubmit)="makeHistorial()" #historialAv="ngForm">
+    <ion-row>
+      <ion-col>
+        <ion-list inset>
+          
+          <ion-item>
+              <ion-label floating>Vin</ion-label>
+            <ion-input type="text"  pattern="[a-zA-Z0-9]{5,17}" placeholder="Vin" name="vin" [(ngModel)]="consultasAV.Vin" required></ion-input>
+          </ion-item>
+          
+          <ion-item>
+              <ion-label floating>Días a consultar</ion-label>
+            <ion-input type="text" pattern="[0-9]{1,2}"  name="diasConsulta" [(ngModel)]="consultasAV.nDias" required></ion-input>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col class="signup-col">
+        <button ion-button class="submit-btn"  full type="submit" [disabled]="!historialAv.form.valid">Consultar</button>
+        
+      </ion-col>
+    </ion-row>
+    
+  </form>
+  <br>
+  <ion-grid text-center>
+    <ion-row >
+      <ion-col width-25><strong>Institucion</strong></ion-col>
+      <ion-col width-25><strong> Id Usuario</strong></ion-col>
+      <ion-col width-25><strong>fecha</strong></ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let item of historialAVDetalle">
+      <ion-col width-25>{{ item.nombre_institucion }}</ion-col>
+      <ion-col width-25>{{ item.id_usuraio }}</ion-col>
+      <ion-col width-25>{{ item.fecha_reporte }}</ion-col>
+    </ion-row>
+
+    
+  </ion-grid>
+</ion-content>

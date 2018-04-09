@@ -1,0 +1,30 @@
+<!--
+  Generated template for the RepuvePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Repuve</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let item of listaConfigRepuve">
+        <ion-label *ngIf="item.descripcion!='ESTATUS' && item.descripcion!='ESTATUS_TRACE' && item.descripcion!='PLACAS_ESTATUS_TRACE'"> {{ item.descripcion }}</ion-label>
+        <ion-input [(ngModel)]="item.valor" *ngIf="item.descripcion!='ESTATUS' && item.descripcion!='ESTATUS_TRACE' && item.descripcion!='PLACAS_ESTATUS_TRACE'" type="text" ></ion-input>
+        
+          <ion-label *ngIf="item.descripcion=='ESTATUS' || item.descripcion=='ESTATUS_TRACE' || item.descripcion=='PLACAS_ESTATUS_TRACE'">{{ item.descripcion }}</ion-label>
+          <ion-toggle  [(ngModel)]="item.valor" *ngIf="item.descripcion=='ESTATUS'  || item.descripcion=='ESTATUS_TRACE' || item.descripcion=='PLACAS_ESTATUS_TRACE'" ></ion-toggle>
+        
+    </ion-item>
+  </ion-list>
+  <div>
+    <button ion-button type="button" (click)="updateConfigRepuve()">Guardar cambios</button>
+  </div>
+</ion-content>
